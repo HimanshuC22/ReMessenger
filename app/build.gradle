@@ -1,0 +1,149 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+repositories {
+    google()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId 'com.example.chatapp'
+
+        resValue 'string', "app_name", "ChatApp"
+        resValue 'string', "support_email", "example@example.com"
+        resValue 'string', "admob_app_id", "TEST_ADMOB"
+        resValue "string", "admob_banner_id", "TEST_ADMOB_BANNER"
+        resValue 'string', "geo_api_key", "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs"
+//        resValue 'string', "sinch_app_key", "a68c2b1a-1c3c-4b34-93e8-24c847cd48a6"
+//        resValue 'string', "sinch_app_secret", "4FdaNaRS/Ei379zkeO+k3w=="
+//        resValue 'string', "sinch_app_environment", "clientapi.sinch.com"
+//        resValue 'string', "authority", applicationId + ".fileprovider"
+
+        resValue 'color', "colorPrimary", "#007FFE"
+        resValue 'color', "colorPrimaryDark", "#007FFE"
+        resValue 'color', "colorAccent", "#007FFE"
+
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 7
+        versionName "1.7"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    viewBinding() {
+        enabled = true
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation(name: 'sinch-android-rtc', version: '+', ext: 'aar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation('com.googlecode.ez-vcard:ez-vcard:0.10.4') {
+        exclude group: 'org.freemarker'
+    }
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.browser:browser:1.2.0'
+
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+
+
+    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
+//    implementation 'com.google.firebase:firebase-ads:19.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+
+//    implementation 'androidx.multidex:multidex:2.0.1'
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    implementation 'androidx.cardview:cardview:1.0.0'
+//    implementation 'androidx.browser:browser:1.2.0'
+//
+//    implementation 'com.google.firebase:firebase-core:17.5.0'
+//    implementation 'com.google.firebase:firebase-database:19.4.0'
+////    implementation 'com.google.firebase:firebase-storage:19.2.0'
+//    implementation 'com.google.firebase:firebase-storage:19.2.1'
+//    implementation 'com.google.firebase:firebase-ads:19.4.0'
+//    implementation 'com.google.firebase:firebase-auth:19.3.2'
+//    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+
+    implementation('com.google.android.libraries.places:places:2.3.0') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    // PING Place Picker
+    implementation 'com.github.rtchagas:pingplacepicker:1.1.2'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
+    implementation 'com.iceteck.silicompressorr:silicompressor:2.1'
+    implementation 'com.kbeanie:multipicker:1.6.2@aar'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.vanniktech:emoji-google:0.5.1'
+    implementation 'com.mxn.soul:flowingdrawer-core:2.1.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.work:work-runtime:2.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    // PING Place Picker
+    implementation 'com.github.rtchagas:pingplacepicker:1.1.2'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+//    implementation "androidx.work:work-runtime:2.4.0"
+
+//    implementation 'de.hdodenhof:circleimageview:3.1.0'
+//    implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
+//    implementation 'com.iceteck.silicompressorr:silicompressor:2.1'
+//    implementation 'com.kbeanie:multipicker:1.5@aar'
+//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+//    implementation 'com.vanniktech:emoji-google:0.5.1'
+//    implementation 'com.mxn.soul:flowingdrawer-core:2.1.0'
+//    implementation 'com.nineoldandroids:library:2.4.0'
+//    implementation 'com.github.bumptech.glide:glide:4.9.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+//    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-firestore:21.7.1'
+
+    implementation 'com.github.dhaval2404:imagepicker:1.8'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.21"
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

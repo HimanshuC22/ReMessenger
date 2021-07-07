@@ -1,0 +1,163 @@
+package com.example.chatapp.adapters;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.chatapp.R;
+import com.example.chatapp.interfaces.ChatItemClickListener;
+import com.example.chatapp.models.User;
+
+import java.util.ArrayList;
+
+/**
+ * Created by mayank on 7/5/17.
+ */
+
+public class MenuUsersRecyclerAdapter extends RecyclerView.Adapter<MenuUsersRecyclerAdapter.BaseViewHolder> implements Filterable {
+    private final Context context;
+    private final ChatItemClickListener itemClickListener;
+    private final ArrayList<User> dataList;
+    private ArrayList<User> dataListFiltered;
+    private final Filter filter;
+    private static final String EXTRA_DATA_CHAT_ID = "extradatachatid";
+
+
+    public MenuUsersRecyclerAdapter(@NonNull Context context, @Nullable ArrayList<User> users) {
+        if (context instanceof ChatItemClickListener) {
+            this.itemClickListener = (ChatItemClickListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement ChatItemClickListener");
+        }
+
+        this.context = context;
+        this.dataList = users;
+        this.dataListFiltered = users;
+        this.filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    dataListFiltered = dataList;
+                } else {
+                    ArrayList<User> filteredList = new ArrayList<>();
+                    for (User row : dataList) {
+                        String toCheckWith = row.getNameInPhone() != null ? row.getNameInPhone() : row.getName();
+                        if (toCheckWith.toLowerCase().startsWith(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+                    dataListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = dataListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                dataListFiltered = (ArrayList<User>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return dataListFiltered.get(position).getId().equals("-1") && dataListFiltered.get(position).getName().equals("-1") ? 0 : 1;
+    }
+
+    @NonNull
+    @Override
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == 1)
+            return new UsersViewHolder(LayoutInflater.from(context).inflate(R.layout.item_menu_user, parent, false));
+        else
+            return new UserInviteHeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.item_menu_user_invite, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+        if (holder instanceof UsersViewHolder) {
+            ((UsersViewHolder) holder).setData(dataListFiltered.get(position));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataListFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return this.filter;
+    }
+
+    class BaseViewHolder extends RecyclerView.ViewHolder {
+        public BaseViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    class UserInviteHeaderViewHolder extends BaseViewHolder {
+        private final TextView inviteTitle;
+        private final TextView inviteMessage;
+
+        UserInviteHeaderViewHolder(final View itemView) {
+            super(itemView);
+            inviteTitle = itemView.findViewById(R.id.inviteTitle);
+            inviteMessage = itemView.findViewById(R.id.inviteMessage);
+            inviteMessage.setSelected(true);
+            inviteTitle.setSelected(true);
+        }
+    }
+
+    class UsersViewHolder extends BaseViewHolder {
+        private final ImageView userImage;
+        private final TextView userName;
+        private final TextView inviteText;
+
+        UsersViewHolder(final View itemView) {
+            super(itemView);
+            userImage = itemView.findViewById(R.id.user_image);
+            userName = itemView.findViewById(R.id.user_name);
+            inviteText = itemView.findViewById(R.id.inviteText);
+
+            itemView.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+//                Toast.makeText(context,dataList.get(pos).isInviteAble()+"",Toast.LENGTH_LONG).show();
+                if (pos != -1) {
+                    if (dataListFiltered.get(pos).isInviteAble()) {
+                        Intent it = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + dataListFiltered.get(pos).getId()));
+                        it.putExtra("sms_body", String.format(context.getString(R.string.invitation_message), context.getString(R.string.app_name), context.getPackageName()));
+                        context.startActivity(it);
+                    } else {
+                        itemClickListener.onChatItemClick(dataListFiltered.get(pos).getId(), dataListFiltered.get(pos).getNameToDisplay(), pos, userImage);
+                    }
+                }
+            });
+        }
+
+        public void setData(User user) {
+            userName.setText(user.getNameToDisplay());
+            inviteText.setVisibility(user.isInviteAble() ? View.VISIBLE : View.GONE);
+            Glide.with(context).load(user.getImage()).apply(new RequestOptions().placeholder(R.drawable.avatar)).into(userImage);
+            userName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        }
+    }
+}

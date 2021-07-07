@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorGreen">#00e676</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="colorBgLight">#EEEEEE</color>
+    <color name="colorBg">#e0e0e0</color>
+    <color name="colorBgDrawer">#f5f5f5</color>
+    <color name="colorIcon">#FFFFFF</color>
+    <color name="transparent_black" tools:keep="@color/transparent_black">#7F000000</color>
+    <color name="bg_gray">#E0E0E0</color>
+
+    <color name="whiteBlack">@color/quantum_black_100</color>
+    <color name="colorSurface">@color/quantum_white_100</color>
+    <color name="colorOnSurface">@color/quantum_black_100</color>
+
+    <color name="windowBackground">#f5f3f3</color>
+
+    <color name="graySelected">#424242</color>
+    <color name="textColor0">#000000</color>
+    <color name="textColor4">#5A5A5A</color>
+    <color name="textColor1">#727272</color>
+    <color name="textColor2">#a1a1a1</color>
+    <color name="textColor3">#b6b6b6</color>
+    <color name="textColor5">@color/textColor3</color>
+    <color name="balloon_colour">@color/messageBodyMyMessage</color>
+
+
+    <color name="darkGreenWA">#075E54</color>
+    <color name="colorSurfaceGrey">#eeeeee</color>
+
+
+    <color name="blue">#FF33B5E5</color>
+    <color name="purple">#FFAA66CC</color>
+
+    <color name="orange">#FFFFBB33</color>
+    <color name="red">#FFFF4444</color>
+    <color name="darkBlue">#3b56de</color>
+    <color name="statusBar">@color/bottom_bar_color</color>
+
+    <color name="textHeading">@color/quantum_white_100</color>
+    <color name="darkPurple">#FF9933CC</color>
+    <color name="darkGreen">#FF669900</color>
+    <color name="darkOrange">#FFFF8800</color>
+    <color name="darkRed">#FFCC0000</color>
+    <color name="darkBluenew">#cad0f2</color>
+    <color name="green">#0F7367</color>
+
+    <color name="bottom_nav">@color/quantum_white_100</color>
+    <color name="titlecolor">@color/quantum_white_100</color>
+
+    <color name="whatsAppDarkBg">@color/colorSurface</color>
+    <color name="fabColor">@color/bottom_bar_color</color>
+    <color name="messageText">@color/quantum_black_text</color>
+
+    <color name="iconColor">@color/quantum_white_100</color>
+    <color name="messageBodyMyMessage">@color/darkBluenew</color>
+    <color name="messageBodyNotMyMessage">@color/quantum_grey200</color>
+
+
+    <color name="main_orange">#FF725E</color>
+
+    <color name="bottom_item_color_selected">@color/quantum_white_100</color>
+    <color name="bottom_item_color_deselected">#9fbfdf</color>
+    <color name="bottom_bar_color">#6c7ce4</color>
+
+</resources>
