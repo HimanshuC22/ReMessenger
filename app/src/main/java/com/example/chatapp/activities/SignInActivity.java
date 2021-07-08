@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -329,6 +330,7 @@ public class SignInActivity extends AppCompatActivity {
         if (countries != null) {
             ArrayAdapter<Country> myAdapter = new ArrayAdapter<Country>(this, R.layout.item_country_spinner, countries);
             spinnerCountryCodes.setAdapter(myAdapter);
+            spinnerCountryCodes.setSelection(0);
         }
     }
 
@@ -361,6 +363,7 @@ public class SignInActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return toReturn;
     }
 

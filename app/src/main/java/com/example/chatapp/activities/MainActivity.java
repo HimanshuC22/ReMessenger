@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity implements HomeIneractor, ChatIte
         topTabLayout.addTab(topTabLayout.newTab().setText("Calls"));
         contactsData = helper.getMyUsersNameCache();
         settingsButton.setOnClickListener(v -> {
-            new ProfileEditDialogFragment().show(getSupportFragmentManager(), PRIVACY_TAG);
+            new OptionsFragment().show(getSupportFragmentManager(), PRIVACY_TAG);
         });
         //If its a url then load it, else Make a text drawable of user's name
         setProfileImage(usersImage);

@@ -49,7 +49,7 @@ public class OptionsFragment extends BaseFullDialogFragment {
     private static final String PROFILE_EDIT_TAG = "profileedittag";
     private ImageView userImage;
 
-    private TextView userName, userStatus, userNumber;
+    private TextView userName, userStatus, userNumber, backButton;
     private SharedPreferences sharedPreferences;
     private Helper helper;
     private SinchService.SinchServiceInterface sinchServiceInterface;
@@ -66,6 +66,10 @@ public class OptionsFragment extends BaseFullDialogFragment {
         userStatus = view.findViewById(R.id.userStatus);
         userNumber = view.findViewById(R.id.userNumberPhone);
         deleteAccount = view.findViewById(R.id.deleteAccount);
+        backButton = view.findViewById(R.id.backProfile);
+        backButton.setOnClickListener(v -> {
+            dismiss();
+        });
 
         helper = new Helper(getContext());
         deleteAccount.setOnClickListener(view1 -> {

@@ -29,6 +29,6 @@ public class Country {
 
     @Override
     public String toString() {
-        return getName() + " (" + getDialCode() + ")";
+        return getCode()+"(" + getDialCode() + ")";
     }
 }
