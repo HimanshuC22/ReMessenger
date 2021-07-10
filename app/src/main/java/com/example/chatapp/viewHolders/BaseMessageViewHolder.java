@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Gravity;
@@ -105,6 +106,10 @@ public class BaseMessageViewHolder extends RecyclerView.ViewHolder {
         String sName = getContactName(context, message.getSenderName());
 
         time.setText(Helper.getTime(message.getDate()));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(isMine())
+            time.setTextColor(context.getColor(R.color.colorSurface));
+        }
         if (message.getRecipientId().startsWith(Helper.GROUP_PREFIX)) {
             senderName.setText(isMine() ? "You" : sName);
             senderName.setVisibility(View.VISIBLE);
