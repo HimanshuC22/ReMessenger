@@ -68,7 +68,7 @@
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         android:text="Message"
-                        android:textColor="@color/quantum_white_100"
+                        android:textColor="@color/changing_black"
                         app:emojiSize="@dimen/emoji_icon_size" />
 
                     <include layout="@layout/partial_message_status_view" />

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -151,6 +152,7 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+//        Log.d("E", "GGGGGGGGGGGGGGGGGGG");
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         collapsingToolbarLayout = findViewById(R.id.collapsingToolbar);
         appBarLayout = findViewById(R.id.appBarLayout);
@@ -163,6 +165,7 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
         userName = findViewById(R.id.user_name);
         userStatus = findViewById(R.id.emotion);
         done = findViewById(R.id.done);
+        done.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         if (intent.hasExtra(EXTRA_DATA_USER)) {
@@ -374,12 +377,12 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
         if (group != null) {
             userName.setEnabled(true);
             userStatus.setEnabled(true);
-            done.setVisibility(View.VISIBLE);
+//            done.setVisibility(View.VISIBLE);
             pickImage.setVisibility(View.VISIBLE);
         } else {
             userName.setEnabled(false);
             userStatus.setEnabled(false);
-            done.setVisibility(View.GONE);
+//            done.setVisibility(View.GONE);
             pickImage.setVisibility(View.GONE);
         }
     }

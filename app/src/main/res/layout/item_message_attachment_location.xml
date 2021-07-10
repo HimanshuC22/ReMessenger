@@ -72,7 +72,7 @@
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
                         android:text="Location"
-                        android:textColor="@color/textColorPrimary" />
+                        android:textColor="@color/changing_black" />
 
                     <include layout="@layout/partial_message_status_view" />
                 </LinearLayout>

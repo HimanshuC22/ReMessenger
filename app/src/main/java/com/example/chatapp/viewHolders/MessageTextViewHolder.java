@@ -1,8 +1,11 @@
 package com.example.chatapp.viewHolders;
 
 import android.animation.ValueAnimator;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Handler;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
@@ -38,6 +41,23 @@ public class MessageTextViewHolder extends BaseMessageViewHolder {
         ll = itemView.findViewById(R.id.container);
         cardView = itemView.findViewById(R.id.card_view);
 
+        /*int nightModeFlags =
+                context.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                text.setTextColor(context.getResources().getColor(R.color.quantum_white_100));
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+//                Log.d("E", "DAY");
+                text.setTextColor(context.getResources().getColor(R.color.quantum_black_100));
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+//                Log.d("E", "patanhi");
+                break;
+        }*/
         text.setTransformationMethod(new LinkTransformationMethod());
         text.setMovementMethod(LinkMovementMethod.getInstance());
         if (_4dpInPx == -1) _4dpInPx = GeneralUtils.dpToPx(itemView.getContext(), 4);
@@ -54,12 +74,13 @@ public class MessageTextViewHolder extends BaseMessageViewHolder {
         super.setData(message, position);
 
         if (isMine()) {
+            text.setTextColor(context.getResources().getColor(R.color.quantum_white_100));
             cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyMyMessage));
             ll.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyMyMessage));
 
 
         } else {
-            text.setTextColor(ContextCompat.getColor(context, R.color.quantum_black_100));
+            //text.setTextColor(ContextCompat.getColor(context, R.color.quantum_black_100));
             cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
             ll.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
 

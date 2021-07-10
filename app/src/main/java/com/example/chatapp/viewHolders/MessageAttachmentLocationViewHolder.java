@@ -1,6 +1,7 @@
 package com.example.chatapp.viewHolders;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
@@ -96,10 +97,53 @@ public class MessageAttachmentLocationViewHolder extends BaseMessageViewHolder {
             String link = String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude);
 //            Log.d(TAG, "setData location: " + link);
 //            Glide.with(context).load(String.format(staticMap + "&key=" + context.getResources().getString(R.string.geo_api_key) + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude)).into(locationImage);
-            Glide.with(context)
-                    .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
-                    .placeholder(R.drawable.ic_location)
-                    .into(locationImage);
+            if(isMine())
+            {
+                text.setTextColor(context.getResources().getColor(R.color.quantum_white_100));
+                Glide.with(context)
+                        .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
+                        .placeholder(R.drawable.ic_location)
+                        .into(locationImage);
+            }
+            else {
+                int nightModeFlags =
+                        context.getResources().getConfiguration().uiMode &
+                                Configuration.UI_MODE_NIGHT_MASK;
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                    {
+                        Glide.with(context)
+                                .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
+                                .placeholder(R.drawable.ic_location_not_mine_dark)
+                                .into(locationImage);
+                    }
+                        break;
+
+                    case Configuration.UI_MODE_NIGHT_NO:
+                    {
+                        Glide.with(context)
+                                .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
+                                .placeholder(R.drawable.ic_location_not_mine_light)
+                                .into(locationImage);
+                    }
+                        break;
+
+                    case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                    {
+                        Glide.with(context)
+                                .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
+                                .placeholder(R.drawable.ic_location_not_mine_dark)
+                                .into(locationImage);
+                    }
+                        break;
+                }
+                /*{
+                    Glide.with(context)
+                            .load(String.format(staticMap + "&key=" + "AIzaSyA7dDjOqEW3XO1X_7AmMgiXixF78l3eNgs" + "&markers=color:red|label:Y|%s,%s&markers=color:red", latitude, longitude, latitude, longitude))
+                            .placeholder(R.drawable.ic_location_not_mine_light)
+                            .into(locationImage);
+                }*/
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

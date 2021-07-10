@@ -16,7 +16,8 @@
     <color name="colorOnSurface">@color/quantum_black_100</color>
     <color name="text_black_new">#535353</color>
     <color name="windowBackground">#f5f3f3</color>
-
+    <color name="changing_black">#000000</color>
+    <color name="changing_black_opp">@color/text_black_new</color>
     <color name="graySelected">#424242</color>
     <color name="textColor0">#000000</color>
     <color name="textColor4">#5A5A5A</color>
@@ -26,8 +27,7 @@
     <color name="textColor3">#b6b6b6</color>
     <color name="textColor5">@color/textColor3</color>
     <color name="balloon_colour">@color/messageBodyMyMessage</color>
-
-
+    <color name="location">#000000</color>
     <color name="darkGreenWA">#075E54</color>
     <color name="colorSurfaceGrey">#eeeeee</color>
 

@@ -327,7 +327,10 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
 
 
         initUi();
-
+        ImageView location = findViewById(R.id.attach_location);
+        location.setOnClickListener(v -> {
+            placePickerAlert();
+        });
         //set basic user info
         String nameText = null, statusText = null, imageUrl = null;
         if (user != null) {
@@ -527,14 +530,14 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
 
     private void recordingStart() {
         if (recordPermissionsAvailable()) {
-            File recordFile = new File(Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING));
+            File recordFile = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name) + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING));
             boolean dirExists = recordFile.exists();
             if (!dirExists)
                 dirExists = recordFile.mkdirs();
             Log.d("E/ERROR", "1");
             if (dirExists) {
                 try {
-                    recordFile = new File(Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING), System.currentTimeMillis() + ".mp3");
+                    recordFile = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name) + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING) + "/.sent/", System.currentTimeMillis() + ".mp3");
                     if (!recordFile.exists())
                         recordFile.createNewFile();
                     Log.d("E/ERROR", "2");

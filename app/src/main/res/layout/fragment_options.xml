@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     android:background="@color/colorSurface"
     android:orientation="vertical">
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginBottom="12dp"
         android:background="@color/main_orange">
-
 
         <ImageView
             android:id="@+id/backProfile"
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:padding="8dp"
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp"
-            app:tint="@color/iconColor" />
+            app:tint="@color/quantum_white_100" />
 
         <TextView
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_toEndOf="@+id/backProfile"
             android:gravity="center_horizontal|center_vertical"
             android:text="Settings"
-            android:textColor="@color/iconColor"
+            android:textColor="@color/quantum_white_100"
             android:textSize="18sp" />
     </RelativeLayout>
 
