@@ -91,11 +91,11 @@ public class IncomingCallScreenActivity extends BaseActivity {
             user = rChatDb.where(User.class).equalTo("id", call.getRemoteUserId()).findFirst();
 
             TextView remoteUser = (TextView) findViewById(R.id.remoteUser);
-            ImageView userImage1 = findViewById(R.id.userImage1);
+//            ImageView userImage1 = findViewById(R.id.userImage1);
             ImageView userImage2 = findViewById(R.id.userImage2);
             remoteUser.setText(user != null ? user.getNameToDisplay() : call.getRemoteUserId());
             if (user != null) {
-                Glide.with(this).load(user.getImage()).apply(new RequestOptions().placeholder(R.drawable.avatar)).into(userImage1);
+//                Glide.with(this).load(user.getImage()).apply(new RequestOptions().placeholder(R.drawable.avatar)).into(userImage1);
                 Glide.with(this).load(user.getImage()).apply(RequestOptions.circleCropTransform().placeholder(R.drawable.avatar)).into(userImage2);
             }
             TextView callingType = findViewById(R.id.yoohoo_calling);

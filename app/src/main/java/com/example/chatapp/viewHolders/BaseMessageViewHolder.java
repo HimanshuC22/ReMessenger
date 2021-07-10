@@ -3,6 +3,8 @@ package com.example.chatapp.viewHolders;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -14,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +30,8 @@ import com.example.chatapp.models.Message;
 import com.example.chatapp.models.User;
 import com.example.chatapp.utils.GeneralUtils;
 import com.example.chatapp.utils.Helper;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 import static com.example.chatapp.adapters.MessageAdapter.OTHER;
@@ -84,6 +90,15 @@ public class BaseMessageViewHolder extends RecyclerView.ViewHolder {
 
     public void setData(Message message, int position) {
         this.message = message;
+        StorageReference reference = FirebaseStorage.getInstance().getReference().child(context.getString(R.string.appName)).child("ProfileImage").child(message.getSenderId());
+        reference.getBytes(9*1024*1024).addOnSuccessListener(bytes -> {
+            Bitmap raw = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            Bitmap raw1 = Bitmap.createScaledBitmap(raw, 80, 80, false);
+            RoundedBitmapDrawable bitmap = RoundedBitmapDrawableFactory.create(context.getResources(), raw1);
+            bitmap.setCircular(true);
+            left.setImageDrawable(bitmap);
+            right.setImageDrawable(bitmap);
+        });
         if (attachmentType == AttachmentTypes.NONE_TYPING)
             return;
 

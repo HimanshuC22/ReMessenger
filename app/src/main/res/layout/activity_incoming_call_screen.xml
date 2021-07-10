@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/main_orange"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/userImage1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar"/>
-
 
     <ImageView
         android:id="@+id/logo"
@@ -34,8 +28,9 @@
 
     <ImageView
         android:id="@+id/userImage2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:src="@drawable/user_white"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_below="@+id/yoohoo_calling"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
@@ -53,7 +48,7 @@
         android:gravity="center"
         android:singleLine="true"
         android:textColor="@android:color/white"
-        android:textSize="22sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/callState"
@@ -77,39 +72,76 @@
         android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        android:weightSum="5"
+        android:padding="25sp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/answerButton"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_weight="2"
-            android:layout_marginRight="24dp"
-            android:background="@drawable/round_green_pickup"
-            android:padding="16dp"
-            android:src="@drawable/ic_call_white_24dp" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25sp">
 
+                <ImageView
+                    android:id="@+id/answerButton"
+                    android:layout_width="125sp"
+                    android:layout_height="125sp"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="16dp"
+                    android:src="@drawable/answer_phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Answer"
+                    android:textColor="@color/quantum_white_100"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/answerButton" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25sp">
+
+                <ImageView
+                    android:id="@+id/declineButton"
+                    android:layout_width="125sp"
+                    android:layout_height="125sp"
+                    android:padding="16dp"
+                    android:src="@drawable/block"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Decline"
+                    android:textColor="@color/quantum_white_100"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/declineButton" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-        <ImageView
-            android:id="@+id/declineButton"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@drawable/round_red_hangup"
-            android:padding="16dp"
-            android:src="@drawable/ic_call_end_black_24dp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -49,7 +49,8 @@ public class OptionsFragment extends BaseFullDialogFragment {
     private static final String PROFILE_EDIT_TAG = "profileedittag";
     private ImageView userImage;
 
-    private TextView userName, userStatus, userNumber, backButton;
+    private TextView userName, userStatus, userNumber;
+    ImageView backButton;
     private SharedPreferences sharedPreferences;
     private Helper helper;
     private SinchService.SinchServiceInterface sinchServiceInterface;

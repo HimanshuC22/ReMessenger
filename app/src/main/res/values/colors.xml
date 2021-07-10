@@ -3,7 +3,8 @@
     <color name="colorGreen">#00e676</color>
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#757575</color>
-    <color name="colorBgLight">#EEEEEE</color>
+    <color name="colorBgLight">#FDA598</color>
+    <color name="light_gray">#EFEFEF</color>
     <color name="colorBg">#e0e0e0</color>
     <color name="colorBgDrawer">#f5f5f5</color>
     <color name="colorIcon">#FFFFFF</color>
@@ -13,13 +14,14 @@
     <color name="whiteBlack">@color/quantum_black_100</color>
     <color name="colorSurface">@color/quantum_white_100</color>
     <color name="colorOnSurface">@color/quantum_black_100</color>
-
+    <color name="text_black_new">#535353</color>
     <color name="windowBackground">#f5f3f3</color>
 
     <color name="graySelected">#424242</color>
     <color name="textColor0">#000000</color>
     <color name="textColor4">#5A5A5A</color>
     <color name="textColor1">#727272</color>
+    <color name="gray_back">#F7F7F7</color>
     <color name="textColor2">#a1a1a1</color>
     <color name="textColor3">#b6b6b6</color>
     <color name="textColor5">@color/textColor3</color>
@@ -54,8 +56,8 @@
     <color name="messageText">@color/quantum_black_text</color>
 
     <color name="iconColor">@color/quantum_white_100</color>
-    <color name="messageBodyMyMessage">@color/darkBluenew</color>
-    <color name="messageBodyNotMyMessage">@color/quantum_grey200</color>
+    <color name="messageBodyMyMessage">@color/main_orange</color>
+    <color name="messageBodyNotMyMessage">@color/light_gray</color>
 
 
     <color name="main_orange">#FF725E</color>

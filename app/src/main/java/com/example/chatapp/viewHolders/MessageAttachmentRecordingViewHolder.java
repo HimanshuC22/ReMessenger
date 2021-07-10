@@ -80,7 +80,8 @@ public class MessageAttachmentRecordingViewHolder extends BaseMessageViewHolder 
 
 
         } else {
-            cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
+            linearLayoutTest.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
+//            cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
             ll.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
 
         }
@@ -91,14 +92,9 @@ public class MessageAttachmentRecordingViewHolder extends BaseMessageViewHolder 
         progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
         playPauseToggle.setVisibility(loading ? View.GONE : View.VISIBLE);
 
-        String s = Environment.getExternalStorageDirectory() + "/"
-                +
-                context.getString(R.string.app_name) + "/" + AttachmentTypes.getTypeName(message.getAttachmentType()) + (isMine() ? "/.sent/" : "")
-                + "---" + message.getAttachment().getName();
-        Log.d("E/PATH", s);
         file = new File(Environment.getExternalStorageDirectory() + "/"
                 +
-                Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(message.getAttachmentType()) + (isMine() ? "/.sent/" : "")
+                Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(message.getAttachmentType())
                 , message.getAttachment().getName());
         if (file.exists()) {
             Uri uri = Uri.fromFile(file);
@@ -131,7 +127,7 @@ public class MessageAttachmentRecordingViewHolder extends BaseMessageViewHolder 
         } else if (!isMine() && !message.getAttachment().getUrl().equals("loading")) {
             broadcastDownloadEvent();
         } else {
-            Toast.makeText(context, "File unavailable", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "File unavailable Honey", Toast.LENGTH_SHORT).show();
         }
     }
 

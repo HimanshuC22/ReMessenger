@@ -84,7 +84,8 @@ public class MessageAttachmentAudioViewHolder extends BaseMessageViewHolder {
 
 
         } else {
-            cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
+            linearLayoutTest.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
+//            cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
             ll.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
 
         }
@@ -99,7 +100,7 @@ public class MessageAttachmentAudioViewHolder extends BaseMessageViewHolder {
 
         file = new File(Environment.getExternalStorageDirectory() + "/"
                 +
-                Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(message.getAttachmentType()) + (isMine() ? "/.sent/" : "")
+                Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(message.getAttachmentType())
                 , message.getAttachment().getName());
         if (file.exists()) {
             Uri uri = Uri.fromFile(file);

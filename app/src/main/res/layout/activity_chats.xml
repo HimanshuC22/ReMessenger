@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@drawable/whatsappbackground"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -80,6 +79,7 @@
                         android:ellipsize="marquee"
                         android:singleLine="true"
                         android:text="Emotion"
+                        android:visibility="gone"
                         android:textColor="@color/quantum_grey400" />
 
                     <TextView
@@ -129,25 +129,30 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/whatsappbackground"
         android:clipToPadding="false"
         android:paddingHorizontal="2dp"
         android:paddingVertical="16dp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginVertical="2dp"
+        android:background="@color/main_orange" />
     <LinearLayout
         android:id="@+id/sendContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_orange"
         android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="8dp"
+        android:paddingVertical="4sp"
         android:paddingRight="8dp">
 
         <ImageView
@@ -159,7 +164,19 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="4dp"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_insert_emoticon_gray_40dp" />
+
+        <ImageView
+            android:id="@+id/attach_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            app:srcCompat="@drawable/ic_attach_location" />
 
         <com.vanniktech.emoji.EmojiEditText
             android:id="@+id/new_message"
@@ -167,7 +184,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/text_backgr"
             android:hint="@string/type_your_message"
             android:paddingStart="10dp"
             android:paddingTop="14dp"
@@ -182,21 +198,30 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
+
             android:foregroundTint="@android:color/white"
             android:padding="4dp"
-            app:srcCompat="@drawable/ic_baseline_attach_file_24" />
+            app:srcCompat="@drawable/ic_image_gallery" />
 
-        <ImageView
-            android:id="@+id/send"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:padding="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/ic_keyboard_voice_24dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="8sp"
+            android:elevation="6sp"
+            android:background="@drawable/send_button_background"
+            >
+            <ImageView
+                android:id="@+id/send"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="6sp"
+                android:paddingHorizontal="10sp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_microphone" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -527,25 +527,36 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
 
     private void recordingStart() {
         if (recordPermissionsAvailable()) {
-            File recordFile = new File(Environment.getExternalStorageDirectory(), "/" + getString(R.string.app_name) + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING) + "/.sent/");
+            File recordFile = new File(Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING));
             boolean dirExists = recordFile.exists();
             if (!dirExists)
                 dirExists = recordFile.mkdirs();
+            Log.d("E/ERROR", "1");
             if (dirExists) {
                 try {
-                    recordFile = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name) + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING) + "/.sent/", System.currentTimeMillis() + ".mp3");
+                    recordFile = new File(Environment.DIRECTORY_DOWNLOADS + "/" + AttachmentTypes.getTypeName(AttachmentTypes.RECORDING), System.currentTimeMillis() + ".mp3");
                     if (!recordFile.exists())
                         recordFile.createNewFile();
+                    Log.d("E/ERROR", "2");
                     recordFilePath = recordFile.getAbsolutePath();
+                    Log.d("E/ERROR", "3");
                     mRecorder = new MediaRecorder();
+                    Log.d("E/ERROR", "4");
                     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    Log.d("E/ERROR", "5");
                     mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+                    Log.d("E/ERROR", "6");
                     mRecorder.setOutputFile(recordFilePath);
+                    Log.d("E/ERROR", "7");
                     mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                    Log.d("E/ERROR", "8");
                     mRecorder.prepare();
+                    Log.d("E/ERROR", "9");
                     mRecorder.start();
+                    Log.d("E/ERROR", "10");
                     recordTimerStart(System.currentTimeMillis());
                 } catch (IOException e) {
+                    Log.d("E/ERROR", e.toString());
                     e.printStackTrace();
                     mRecorder = null;
                 } catch (IllegalStateException ex) {
@@ -559,6 +570,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     }
 
     private void recordTimerStart(final long currentTimeMillis) {
+        Log.d("STARTED", "RECORDERSTARTED");
         Toast.makeText(this, R.string.recodring, Toast.LENGTH_SHORT).show();
         recordTimerRunnable = new Runnable() {
             public void run() {
@@ -737,7 +749,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                sendMessage.setImageDrawable(ContextCompat.getDrawable(ChatActivity.this, s.length() == 0 ? R.drawable.ic_keyboard_voice_24dp : R.drawable.ic_send));
+                sendMessage.setImageDrawable(ContextCompat.getDrawable(ChatActivity.this, s.length() == 0 ? R.drawable.ic_microphone : R.drawable.ic_send_button));
 
                 if (user != null) {
                     if (timer != null) {

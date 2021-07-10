@@ -1,88 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="10sp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:id="@+id/linearTest"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/left_bubble"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_margin="8sp"
+        android:src="@drawable/ic_microphone"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/left_bubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="-6dp"
-            android:layout_marginEnd="-12dp"
-            android:background="@null"
-            android:scaleX="-1.5"
-            android:src="@drawable/message_shape"
-            android:visibility="gone" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="43sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/linearTest"
+            android:layout_width="113dp"
+            android:layout_height="144dp"
+            android:background="@drawable/my_message_background"
+            android:orientation="vertical"
+            android:padding="2sp"
+            app:layout_constraintStart_toEndOf="@+id/left_bubble"
+            tools:layout_editor_absoluteY="3dp">
+
+            <TextView
+                android:id="@+id/senderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="You"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/draw"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10sp"
+                android:src="@drawable/audio_icon" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_view"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorBgLight"
                 app:cardCornerRadius="7dp"
                 app:cardElevation="0dp">
 
                 <LinearLayout
                     android:id="@+id/container"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:background="@android:color/white"
+                    android:background="@color/main_orange"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/senderName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:paddingLeft="14dp"
-                        android:paddingRight="14dp"
-                        android:text="You"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16sp"
-                        android:visibility="gone" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="14dp"
-                        android:paddingTop="6dp"
-                        android:paddingRight="14dp"
-                        android:paddingBottom="6dp">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:id="@+id/playPauseToggleContainer"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp">
+                            android:layout_height="wrap_content">
 
                             <ImageView
                                 android:id="@+id/playPauseToggle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_audiotrack_24dp" />
+                                android:layout_width="16sp"
+                                android:layout_height="16sp"
+                                android:src="@drawable/ic_play_circle_outline" />
 
                             <ProgressBar
                                 android:id="@+id/progressBar"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
                                 android:visibility="gone" />
                         </LinearLayout>
 
@@ -99,13 +105,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minEms="6"
-                                android:text="Audio"
-                                android:textColor="@color/textColorPrimary" />
+                                android:text="Voice Message"
+                                android:textColor="@color/textColorPrimary"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/duration"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:minEms="6"
                                 android:text="2:31"
                                 android:textColor="@color/textColor1"
@@ -118,20 +126,21 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/right_bubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="-12dp"
-            android:layout_marginTop="-6dp"
-            android:background="@null"
-            android:scaleX="1.5"
-            android:src="@drawable/message_shape_two"
-            android:visibility="gone" />
-    </LinearLayout>
+    </FrameLayout>
 
-
-</FrameLayout>
+    <ImageView
+        android:id="@+id/right_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8sp"
+        android:background="@drawable/check"
+        android:src="@drawable/check"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearTest"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,6 +59,7 @@ public class MessageTextViewHolder extends BaseMessageViewHolder {
 
 
         } else {
+            text.setTextColor(ContextCompat.getColor(context, R.color.quantum_black_100));
             cardView.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
             ll.setBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
 

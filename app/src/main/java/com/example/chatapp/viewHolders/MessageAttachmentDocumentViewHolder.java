@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import java.io.File;
 
 public class MessageAttachmentDocumentViewHolder extends BaseMessageViewHolder {
     TextView fileExtention;
+    ImageView fileIcon;
     TextView fileName;
     TextView fileSize;
     LinearLayout ll;
@@ -44,6 +46,7 @@ public class MessageAttachmentDocumentViewHolder extends BaseMessageViewHolder {
         fileName = itemView.findViewById(R.id.file_name);
         fileSize = itemView.findViewById(R.id.file_size);
         ll = itemView.findViewById(R.id.container);
+        fileIcon = itemView.findViewById(R.id.file_icon);
         card_view = itemView.findViewById(R.id.card_view);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +71,11 @@ public class MessageAttachmentDocumentViewHolder extends BaseMessageViewHolder {
     public void setData(Message message, int position) {
         super.setData(message, position);
         if (isMine()) {
+            fileIcon.setImageDrawable(context.getDrawable(R.drawable.paper_white));
             card_view.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyMyMessage));
 
         } else {
+            fileIcon.setImageDrawable(context.getDrawable(R.drawable.paper_black));
             card_view.setCardBackgroundColor(ContextCompat.getColor(context, message.isSelected() ? R.color.colorBgLight : R.color.messageBodyNotMyMessage));
 
         }

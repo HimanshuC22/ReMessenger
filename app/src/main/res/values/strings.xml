@@ -39,7 +39,7 @@
     <string name="done">DONE</string>
     <string name="hint_group_name">Group name</string>
     <string name="group_info">Group info</string>
-    <string name="short_description_of_group">Short description of group!</string>
+    <string name="short_description_of_group">Short description of group</string>
     <string name="participants_0">Participants (0)</string>
     <string name="add_more">+ Add more</string>
     <string name="get_image_title">Get image from</string>
@@ -129,10 +129,10 @@
     <string name="chooseTheme">Choose Theme</string>
     <string name="editProfile">Edit Profile</string>
     <string name="about">About</string>
-    <string name="ABOUT">ABOUT</string>
+    <string name="ABOUT">About</string>
     <string name="editProfileTextBlah">Enter your name and add and optional profile picture</string>
-    <string name="NAME">NAME</string>
-    <string name="PHONE_NUMBER">PHONE NUMBER</string>
+    <string name="NAME">Name</string>
+    <string name="PHONE_NUMBER">Phone Number</string>
     <string name="recent_calls">Recent Calls</string>
     <string name="author">App for Chatting</string>
     <string name="buddyChat">CHAT APP</string>

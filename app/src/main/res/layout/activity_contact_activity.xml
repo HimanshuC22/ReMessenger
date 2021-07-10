@@ -1,31 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/searchContact"
+    <LinearLayout
+        android:id="@+id/action"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/main_orange"
-        android:drawableLeft="@drawable/places_ic_search"
-        android:drawableTint="@color/iconColor"
-        android:drawablePadding="12dp"
-        android:textColor="@android:color/white"
-        android:drawableStart="@drawable/places_ic_search"
-        android:gravity="center_vertical"
-        android:hint="@string/hint_search"
-        android:textColorHint="@android:color/white"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:singleLine="true" />
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/main_orange"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="New Chat"
+                android:textColor="@color/iconColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/main_orange"
+            android:paddingHorizontal="15sp"
+            android:paddingBottom="5sp"
+            >
+            <EditText
+                android:id="@+id/searchContact"
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10sp"
+                android:paddingLeft="15sp"
+                android:drawablePadding="15sp"
+                android:hint="Search"
+                android:textColor="@color/text_black_new"
+                android:drawableStart="@drawable/ic_search_icon"
+                android:gravity="center_vertical"
+                android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/menu_recycler_view_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchContact">
+        android:layout_below="@id/action">
 
         <androidx.recyclerview.widget.RecyclerView
             android:background="@color/colorSurface"
