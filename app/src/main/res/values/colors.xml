@@ -55,6 +55,8 @@
     <color name="fabColor">@color/bottom_bar_color</color>
     <color name="messageText">@color/quantum_black_text</color>
 
+
+    <color name="nightTextHeading">#FFFFFF</color>
     <color name="iconColor">@color/quantum_white_100</color>
     <color name="messageBodyMyMessage">@color/main_orange</color>
     <color name="messageBodyNotMyMessage">@color/light_gray</color>

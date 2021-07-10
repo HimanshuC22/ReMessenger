@@ -163,6 +163,7 @@ public class OptionsFragment extends BaseFullDialogFragment {
             @Override
             public void onClick(View view) {
                 MainActivity.viewPager.setCurrentItem(2);
+                dismiss();
 
             }
         });

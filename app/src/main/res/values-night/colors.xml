@@ -4,6 +4,7 @@
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#757575</color>
     <color name="colorBgLight">#EEEEEE</color>
+    <color name="light_gray">@color/colorSurface</color>
     <color name="colorBg">#e0e0e0</color>
     <color name="colorBgDrawer">#f5f5f5</color>
     <color name="colorIcon">#FFFFFF</color>
@@ -12,7 +13,7 @@
 
 
     <color name="statusBar">#01101A</color>
-    <color name="textHeading">@color/bottom_item_color_selected</color>
+    <color name="textHeading">@color/nightTextHeading</color>
     <color name="whiteBlack">@color/quantum_white_100</color>
     <color name="balloon_colour">@color/quantum_white_100</color>
 
@@ -48,8 +49,8 @@
     <color name="whatsAppDarkBg">#001626</color>
     <color name="darkBluenew">#014366</color>
 
-    <color name="messageBodyMyMessage">@color/darkBluenew</color>
-    <color name="messageBodyNotMyMessage">#3C464D</color>
+    <color name="messageBodyMyMessage">@color/main_orange</color>
+    <color name="messageBodyNotMyMessage">@color/light_gray</color>
     <color name="iconColor">@color/bottom_item_color_selected</color>
     <color name="fabColor">#4fc3f7</color>
     <color name="messageText">@color/quantum_white_100</color>

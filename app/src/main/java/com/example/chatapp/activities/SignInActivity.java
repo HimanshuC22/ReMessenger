@@ -11,9 +11,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +64,7 @@ public class SignInActivity extends AppCompatActivity {
     private DatabaseReference userRef, newUserRef;
     private Helper helper;
     private EditText otpCode;
+    private EditText[] OTP;
     private KeyboardUtil keyboardUtil;
     private String phoneNumberInPrefs = null;
     private final String verificationCode = null;
@@ -82,12 +81,14 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Realm.init(this);
         rChatDb = Helper.getRealmInstance();
         helper = new Helper(this);
         Log.d(TAG, "onCreate: SignInActivity" + helper.isLoggedIn() + " phone number status " + helper.getPhoneNumberForVerification());
         User user = helper.getLoggedInUser();
         setContentView(R.layout.activity_sign_in_1);
+
 
 //        if (helper.getPhoneNumberForVerification() != null) {
         if (user != null) {
@@ -111,6 +112,11 @@ public class SignInActivity extends AppCompatActivity {
                 retryTimer = findViewById(R.id.resend);
                 verificationMessage = findViewById(R.id.verificationMessage);
                 otpCode = findViewById(R.id.otp);
+                OTP = new EditText[]{findViewById(R.id.otp1), findViewById(R.id.otp2), findViewById(R.id.otp3), findViewById(R.id.otp4), findViewById(R.id.otp5), findViewById(R.id.otp6)};
+                for(int i = 1; i<=6; i++)
+                {
+                    OTP[i-1].addTextChangedListener(new GenericTextWatcher(OTP[i-1], OTP));
+                }
                 findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -136,7 +142,16 @@ public class SignInActivity extends AppCompatActivity {
                         submit();
                     } else {
                         //force authenticate
-                        String otp = otpCode.getText().toString();
+                        String otp = "";
+                        for(int i = 0; i<6; i++)
+                        {
+                            if(OTP[i].getText().equals(""))
+                            {
+                                Toast.makeText(getApplicationContext(), "Enter OTP", Toast.LENGTH_LONG).show();
+                                break;
+                            }
+                            otp += OTP[i].getText().toString();
+                        }
                         if (!TextUtils.isEmpty(otp) && !TextUtils.isEmpty(mVerificationId))
                             signInWithPhoneAuthCredential(getCredential(mVerificationId, otp));
                         //verifyOtp(otpCode[0].getText().toString() + otpCode[1].getText().toString() + otpCode[2].getText().toString() + otpCode[3].getText().toString());

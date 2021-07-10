@@ -5,7 +5,7 @@
     android:layout_marginTop="8dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:background="@color/gray_back"
+    android:background="@color/colorSurface"
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
 

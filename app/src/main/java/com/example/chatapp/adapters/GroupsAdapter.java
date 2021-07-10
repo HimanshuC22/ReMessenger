@@ -1,6 +1,7 @@
 package com.example.chatapp.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -103,6 +105,7 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.MyViewHold
 
             itemView.setOnClickListener(view -> {
                 int pos = getAdapterPosition();
+                Toast.makeText(context, dataListFiltered.get(pos).getId(), Toast.LENGTH_LONG).show();
                 itemClickListener.onChatItemClick(dataListFiltered.get(pos).getId(), dataListFiltered.get(pos).getName(), pos, userImage);
             });
         }
