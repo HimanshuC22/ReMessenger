@@ -127,7 +127,7 @@ public class MessageAttachmentRecordingViewHolder extends BaseMessageViewHolder 
         } else if (!isMine() && !message.getAttachment().getUrl().equals("loading")) {
             broadcastDownloadEvent();
         } else {
-            Toast.makeText(context, "File unavailable Honey", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "File unavailable", Toast.LENGTH_SHORT).show();
         }
     }
 
