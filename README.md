@@ -1,3 +1,1 @@
-# BuddyChat
-
-nothing to see here go away
+# Chat App
